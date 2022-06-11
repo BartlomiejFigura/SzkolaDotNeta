@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj szerokosc prostokata");
+            double width = Convert.ToDouble(Console.ReadLine());
+            
+          Console.WriteLine("Podaj wysokosc prostokata");
+            double height = Convert.ToDouble(Console.ReadLine());
+             
+             double diagonal =Math.Sqrt(Math.Pow(width,2)+Math.Pow(height,2));
+             diagonal=Math.Round(diagonal,2);
+
+Console.WriteLine("Przekatna tego prostokata wynosi: ") ;            Console.WriteLine(diagonal);
+             
+             
+            
+        }
+    }
+}
