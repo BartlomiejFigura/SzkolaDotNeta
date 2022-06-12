@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int totalPoints;
+            string courseName;
+            double value;
+            
+            totalPoints = 10;
+            courseName ="Szkoła Dotneta"; //jak moge zrobic polskie znaki?
+            value = 12.5;
+            
+            Console.WriteLine(totalPoints );
+            Console.WriteLine (courseName );
+            Console.WriteLine (value);
+        }
+    }
+}
