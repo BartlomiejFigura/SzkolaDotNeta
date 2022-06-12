@@ -1,0 +1,59 @@
+//czy Convert.To... to to samo co Parse?
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SzkolaDotNeta
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj dane pracownika: ");
+            
+            Console.WriteLine("Podaj imie: ");
+            string employeeName = Console.ReadLine();
+            
+            Console.WriteLine("Podaj nazwisko: ");
+            string employeeSurname = Console.ReadLine();
+            
+            Console.WriteLine("Podaj numer telefonu: ");
+            decimal number=Convert.ToDecimal(Console.ReadLine());
+            
+            Console.WriteLine("Podaj email: ");
+            string email = Console.ReadLine();
+            
+            Console.WriteLine("Podaj wzrost w m");
+            double height = Convert.ToDouble(Console.ReadLine());
+            
+            Console.WriteLine("Podaj wage w kg");
+            double weigth = Convert.ToDouble(Console.ReadLine());
+            
+            Console.WriteLine("Podaj wiek: ");
+            int age= Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("Podaj plec: ");
+            char sex = Convert.ToChar(Console.ReadLine());
+            
+            Console.WriteLine("Podaj pesel: ");
+            decimal pesel = Convert.ToDecimal(Console.ReadLine());
+            
+            Console.WriteLine("Podaj id: ");
+            decimal id = Convert.ToDecimal(Console.ReadLine());
+            
+            Console.WriteLine("Imie pracownika to {0}", employeeName );
+            Console.WriteLine("Nazwisko pracownika to {0}", employeeSurname   );
+            Console.WriteLine("Numer telefonu to {0}", number);
+            Console.WriteLine("Wzrost pracownika to {0}", height );
+            Console.WriteLine("Waga pracownika to {0}", weight );
+            Console.WriteLine("Wiek pracownika to {0}", age);
+            Console.WriteLine("Plec pracownika to: {0}", sex);
+            Console.WriteLine("Pesel pracownika to: {0}", pesel);
+            Console.WriteLine("Id pracownika to: {0}", id);
+            
+        }
+    }
+}
