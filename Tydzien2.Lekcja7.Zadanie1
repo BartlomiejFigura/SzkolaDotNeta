@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void Equal ( int a, int b)
+        {
+            if( a == b )
+            {
+                Console.WriteLine("Liczby "+a+" i "+b+" sa rowne");
+            }
+            else 
+            {
+                Console.WriteLine("Liczby "+a+" i " +b+" nie sa rowne");
+            }
+        }
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj pierwsza liczbe: ");
+            int number1 = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("Podaj druga liczbe: ");
+            int number2 = Convert.ToInt32(Console.ReadLine());
+            
+            Equal(number1, number2);
+            
+            
+        }
+    }
+}
