@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void Even ( int a)
+        {
+            if( a%2==0)
+            {
+                Console.WriteLine("Liczba "+a+" jest parzysta");
+            }
+            else 
+            {
+                Console.WriteLine("Liczba "+a+" nie jest parzysta");
+            }
+        }
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj liczbe: ");
+            int number1 = Convert.ToInt32(Console.ReadLine());
+            
+            
+            Even(number1);
+            
+            
+        }
+    }
+}
