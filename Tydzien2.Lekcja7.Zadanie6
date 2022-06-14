@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void Authorities ( int a, string name) 
+        {
+            if( a>=140 && a<170)
+            {
+                Console.WriteLine(name+" to obsluga techniczna katapult");
+            }
+            else if(a>=170 && a<210)
+            {
+                Console.WriteLine(name+"Jest lucznikiem");
+            }
+            else if (a>=210)
+            {
+                Console.WriteLine("{0} jest elfem", name);
+            }
+            else if (a<140 && a>=0)
+            {
+                Console.WriteLine("{0} jest krasnoludem", name);
+            }
+            else
+            {
+                Console.WriteLine("Sprobuj ponownie, wzrost musi byc wiekszy niz 0");
+            } 
+        }
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj imie kandydata: ");
+            string name = Console.ReadLine();
+            
+            int height;
+            
+            do
+            {
+                Console.WriteLine("Podaj wzrost: ");
+                height = Convert.ToInt32(Console.ReadLine());
+            
+            
+                Authorities   (height, name);
+            }while(height<0);
+            
+        }
+    }
+}
