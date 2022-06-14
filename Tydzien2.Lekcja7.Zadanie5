@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void Authorities ( int a, string name) 
+        {
+            if( a>=21 && a<30)
+            {
+                Console.WriteLine(name+ " ma "+a+" lat i moze zostac poslem lub premierem");
+            }
+            else if(a>=30 && a<35)
+            {
+                Console.WriteLine(name+ " ma "+a+" lat i moze zostac poslem ,senatorem lub premierem");
+            }
+            else if (a>=35)
+            {
+                Console.WriteLine("{0} ma {1} lat i moze zostac poslem, premierem, senatorem lub prezydentem", name, a);
+            }
+            else if (a<21 && a>=0)
+            {
+                Console.WriteLine("{0} ma {1} lat i jeszcze jest za mlody", name, a);
+            }
+            else
+            {
+                Console.WriteLine("Sprobuj ponownie, wiek musi byc wiekszy niz 0");
+            } 
+        }
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj imie kandydata: ");
+            string name = Console.ReadLine();
+            
+            int age;
+            
+            do
+            {
+                Console.WriteLine("Podaj wiek: ");
+                age = Convert.ToInt32(Console.ReadLine());
+            
+            
+                Authorities   (age, name);
+            }while(age<0);
+            
+        }
+    }
+}
