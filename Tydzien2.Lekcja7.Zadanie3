@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void PositiveAndNegative ( int a)
+        {
+            if( a>0)
+            {
+                Console.WriteLine("Liczba "+a+" jest dodatnia");
+            }
+            else if(a<0)
+            {
+                Console.WriteLine("Liczba "+a+" jest ujemna");
+            }
+            else 
+            {
+                Console.WriteLine("Liczba jest rowna 0");
+            }
+        }
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj liczbe: ");
+            int number1 = Convert.ToInt32(Console.ReadLine());
+            
+            
+            PositiveAndNegative (number1);
+            
+            
+        }
+    }
+}
