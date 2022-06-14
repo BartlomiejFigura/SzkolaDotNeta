@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace DotNet
+{
+    class Program
+    {
+        static void LeapYear ( int year) /*criminal year :)*/
+        {
+            if( year%4==0 && year%100!=0 || year%400==0)
+            {
+                Console.WriteLine("Rok "+year+" jest przestepny");
+            }
+            else 
+            {
+                Console.WriteLine("Rok " +year+" nie jest przestepny");
+            }
+        }
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj rok: ");
+            int year = Convert.ToInt32(Console.ReadLine());
+            
+            
+            LeapYear  (year);
+            
+            
+        }
+    }
+}
