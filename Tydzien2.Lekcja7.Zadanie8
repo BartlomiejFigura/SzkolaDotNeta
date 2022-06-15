@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Results (int scienceR, int mathR, int chemistryR)
+        {
+            if(mathR>70 && scienceR>55 && chemistryR>45 && mathR+scienceR+chemistryR>180 || mathR+ scienceR> 150 || mathR + chemistryR >150)
+            {
+                Console.WriteLine ("Gratulacje, dostales sie :)");
+            }
+            
+            else 
+            {
+               Console.WriteLine("Niestety nie udalo sie dostac, sprobuj ponownie za rok");
+            }
+        }
+    
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Rekrutacja: ");
+            
+            Console.WriteLine("Podaj wynik matematyki: ");
+            int math = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("Podaj wynik fizyki: ");
+            int science = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("Podaj wynik chemi: ");
+            int chemistry = Convert.ToInt32(Console.ReadLine());
+            
+            Results (science, math, chemistry );
+        }
+    }
+}
