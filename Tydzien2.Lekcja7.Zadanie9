@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Weather (int temperatureW)
+        {
+            if(temperatureW <0)
+            {
+                Console.WriteLine ("Pizdzi jak w kieleckim na dworcu");
+            }
+            
+            else if (temperatureW >=0 && temperatureW < 10)
+            {
+               Console.WriteLine("zimno");
+            }
+            
+            else if (temperatureW >=10 && temperatureW <20)
+            {
+                Console.WriteLine("chlodno");
+            }
+            
+            else if (temperatureW >=20 && temperatureW <30)
+            {
+                Console.WriteLine("w sam raz");
+            }
+            
+            else if (temperatureW >=30 && temperatureW <40)
+            {
+                Console.WriteLine("zaczyna byc slabo, bo goraco");
+            }
+            else 
+            {
+                Console.WriteLine ("a wez, wyprowadzam sie na Alaske.");
+            }
+            
+        }
+    
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Pogoda: ");
+            
+            Console.WriteLine("Podaj temperature: ");
+            int temperature  = Convert.ToInt32(Console.ReadLine());
+            
+            Weather (temperature );
+        }
+    }
+}
