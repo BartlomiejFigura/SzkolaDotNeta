@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj dzien tygodnia: ");
+            int dzien = Convert.ToInt32(Console.ReadLine());
+            
+            string result = dzien switch
+            {
+                1 => "Poniedzialek",
+                2 => "Wtorek",
+                3 => "Sroda",
+                4 => "Czwartek",
+                5 => "Piatek",
+                6 => "Sobota",
+                7 => "Niedziela",
+                _ => "liczba poza zakresem"
+                
+            };
+            Console.WriteLine(result);
+        }
+    }
+}
