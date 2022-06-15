@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void AddValuesToArray(int [] array, int arraySize)
+        {
+            
+            for( int i=0; i< arraySize; i++)
+            {
+                Console.WriteLine("Podaj wartosc {0}-ego odcinka", i+1);
+                array[i]=Convert.ToInt32(Console.ReadLine());
+              
+            }
+        }
+        
+        static void PrintArray(int []arrayP, int arraySizeP, string text)
+        {
+            Console.WriteLine(text);
+            for(int i=0; i<arraySizeP; i++)
+            {
+                Console.Write(arrayP [i]+",");
+            }
+        }
+        
+        static void Change( int []arrayC, int element1, int element2)
+        {
+            int substitute =0;
+            substitute = arrayC[element1];
+            arrayC[element1]=arrayC[element2];
+            arrayC[element2]=substitute;
+        }
+        
+        static void Sort ( int []arrayS)
+        {
+            for(int i=0; i<arrayS.Length; i++)
+            {
+                for( int j=i+1; j<arrayS.Length; j++)
+                {
+                    if(arrayS[i]<arrayS[j])
+                    {
+                        Change(arrayS, i, j);
+                    }
+                }
+            }
+        }
+        
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Program sprawdzajacy czy z danych odcinkow mozna zbudowac trojkat");
+            
+            int []tablica = new int [3];
+            
+            
+            AddValuesToArray (tablica,3);
+            
+            PrintArray (tablica,3, "Odcinki, ktore podales: ");
+            
+            Sort(tablica);
+            
+            //PrintArray (tablica, 3);
+            //Console.WriteLine("\r\n Najwiekszy z nich to: " +tablica[0]);
+            
+            if(tablica[1]+tablica[2]>tablica[0])
+            {
+                Console.WriteLine("\r\nZ tych odcinkow mozna zbudowac trojkat.");
+            }
+            else 
+            {
+                Console.WriteLine("Nie da sie zbudowac trojkata z tych odcinkow.Zeby z odcinkow zbudowac trojkat suma krotszych bokow musi byc wieksza od najdluzszego odcinka");
+            }
+            
+        }
+    }
+}
