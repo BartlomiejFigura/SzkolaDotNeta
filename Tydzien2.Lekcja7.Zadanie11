@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int ocena;
+            do{
+                Console.WriteLine("Podaj ocene ucznia od 1 do 6: ");
+                ocena = Convert.ToInt32(Console.ReadLine());
+            
+                string result = ocena switch
+                {
+                    1 => "Niedostateczny",
+                    2 => "Dopuszczajacy",
+                    3 => "Dostateczny",
+                    4 => "Dobry",
+                    5 => "Bardzo dobry",
+                    6=> "Celujacy",
+                    _=>"Ocena poza zakresem, wprowadz jeszcze raz"
+                };
+                Console.WriteLine(result);
+            }while(ocena!=1 && ocena!=2 && ocena!=3 && ocena!=4 && ocena!=5 && ocena!=6);
+        }/*czy da sie to while zrobic krotsze? 
+Probowalem zrobic zakresem ale nie dalo sie */
+    }
+}
