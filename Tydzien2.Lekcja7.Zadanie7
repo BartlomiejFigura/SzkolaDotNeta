@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void AddValuesToArray(int [] array, int arraySize)
+        {
+            
+            for( int i=0; i< arraySize; i++)
+            {
+                Console.WriteLine("Podaj wartosc {0}-ego elementu", i+1);
+                array[i]=Convert.ToInt32(Console.ReadLine());
+              
+            }
+        }
+        
+        static void PrintArray(int []arrayP, int arraySizeP, string text)
+        {
+            Console.WriteLine(text);
+            for(int i=0; i<arraySizeP; i++)
+            {
+                Console.Write(arrayP [i]+",");
+            }
+        }
+        
+        static void Change( int []arrayC, int element1, int element2)
+        {
+            int substitute =0;
+            substitute = arrayC[element1];
+            arrayC[element1]=arrayC[element2];
+            arrayC[element2]=substitute;
+        }
+        
+        static void Sort ( int []arrayS)
+        {
+            for(int i=0; i<arrayS.Length; i++)
+            {
+                for( int j=i+1; j<arrayS.Length; j++)
+                {
+                    if(arrayS[i]<arrayS[j])
+                    {
+                        Change(arrayS, i, j);
+                    }
+                }
+            }
+        }
+        
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Program sprawdzajacy ktora liczba jest najwieksza");
+            
+            int []tablica = new int [3];
+            
+            //Console.WriteLine("Podaj pierwsza liczbe: ");
+            
+            AddValuesToArray (tablica, 3);
+            //PrintArray (tablica, 3);
+            
+            //Change(tablica , 0, 2);
+            
+            PrintArray (tablica,3, "Liczby, ktore podales: ");
+            
+            Sort(tablica);
+            
+            //PrintArray (tablica, 3);
+            Console.WriteLine("\r\n Najwieksza z nich to: " +tablica[0]);
+            
+        }
+    }
+}
