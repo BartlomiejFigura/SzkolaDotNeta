@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int current=2;
+            int count=0;
+            while(current<100)
+            {
+                bool isPrime = true;
+                for (int i=2; i<current; i++)
+                {
+                    if(current%i==0)
+                    {
+                        isPrime =false;
+                    }
+                }
+                
+                if(isPrime==true)
+                {
+                    //Console.WriteLine(current);
+                    count++;
+                }
+                
+                current++;
+            }
+            
+            Console.WriteLine("Ilosc liczb pierwszych: " +count);
+        }
+    }
+}
