@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int temp=1;
+            Console.WriteLine("Podaj liczbe rzedow piramidy: ");
+            int size= Convert.ToInt32(Console.ReadLine());
+            
+            for(int row=1;row<=size;row++)
+            {
+                for( int col=1;col<=row; col++)
+                {
+                    Console.Write(temp);
+                    temp++;
+                }
+                Console.WriteLine();
+            }
+            
+        }
+    }
+}
