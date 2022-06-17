@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            int number=0;
+            double sum=0;
+            do
+            {
+                double x = number+1;
+                double divide= 1/x;
+                double roundDivide=Math.Round(divide,3);
+                sum+=roundDivide;
+
+                //Console.WriteLine(roundDivide);
+                
+                number++;
+                
+            }while(number<=20);
+            Console.WriteLine("Wynik dodawania liczb od 0 do 20 wedlug wzoru 1+1/2+1/3 itd to: "+sum);
+        }
+    }
+}
