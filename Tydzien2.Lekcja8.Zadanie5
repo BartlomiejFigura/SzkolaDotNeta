@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Sololearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Do ktorej potegi chcesz podniesc");
+            double power= Convert.ToDouble(Console.ReadLine());
+            
+            int number=1;
+            while(number<=20)
+            {
+                double result=Math.Pow(number,power);
+                Console.WriteLine(result);
+                number++;
+            }
+        }
+    }
+}
