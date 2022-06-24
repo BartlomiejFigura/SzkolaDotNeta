@@ -1,0 +1,266 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace CrmPv
+{
+    class Program
+    {
+    //aplikacja crm handlowcow fotowoltaiki
+            //uzytkownik zostanie przywitany
+            //zapytamy uzytkownika jaka akcje chce wybrac
+            //akcje do wyboru:
+            
+            ////a.v dodanie nowego handlowca
+            ////b.v zwolnienie handlowca
+            ////c.v wyswietlenie wszystkich handlowcow
+            ////d.v posortowanie wedlug najlepszych handlowcow
+            ////e. wyswietlenie handlowca po id
+            ////d. zakoncz program
+            
+    
+    
+    
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, welcome to CRM for Pv companies");
+            
+            MenuActionService actionService = new MenuActionService();
+            actionService= Initialize(actionService);
+            
+            var mainMenu = actionService.GetAllActionsFromMenuName ("glowne");
+            for(int i=0; i<mainMenu.Count; i++)
+            {
+                Console.WriteLine($"{mainMenu[i].Id}.{mainMenu[i].Name}");
+            }
+            Console.WriteLine("Powiedz mi co chcesz zrobic: ");
+            var traderService = new TraderService();
+            var userInput = Console.ReadKey();
+            
+            while(true){
+            switch(userInput.KeyChar)
+            {
+                case '1':
+                Console.WriteLine("\nPodaj imie handlowca");
+                string name=Console.ReadLine();
+                
+                Console.WriteLine("\nPodaj nazwisko handlowca");
+                string surname=Console.ReadLine();
+                
+                
+                Console.WriteLine("\nPodaj id handlowca");
+                int id = Convert.ToInt32(Console.ReadLine());
+                
+                
+                Console.WriteLine("\nPodaj ilosc sprzedanych kwp");
+                double kwp = Convert.ToDouble(Console.ReadLine());
+                
+                var newTrader= new Trader(id, name, surname, kwp);
+                             traderService.AddTrader(newTrader);
+                
+                break;
+                
+                
+                case '2':
+                Console.WriteLine("\nPodaj id pracownika, ktory ma zostac zwolniony");
+                int idDelete=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Pracownik, ktory zostal zwolniony to: ");
+traderService.DisplayTrader(idDelete );
+                traderService.DeleteTrader(idDelete);
+                break;
+                
+                case '3':
+                Console.WriteLine();
+                traderService.DisplayAllTraders();
+                break;
+                
+                case '4':
+                Console.WriteLine("\nNajlepszy handlowiec to: ");
+                traderService.FindTheBest();
+                break;
+                
+                case '5':
+                Console.WriteLine("\nRanking: ");
+                traderService.Ranking();
+                break;
+                
+                case '6':
+                Console.WriteLine("\nPodaj id handlowca ktorego chcesz wyswietlic");
+                int idSearch=Convert.ToInt32(Console.ReadLine());
+                traderService.FindTrader(idSearch);
+                break;
+                case 'E':
+                return;
+                
+                default:
+                Console.WriteLine("\nPodany numer nie znajduje sie w menu");
+                break;
+            }
+            
+            Console.WriteLine();
+            
+            for(int i=0; i<mainMenu.Count; i++)
+            {
+                Console.WriteLine($"{mainMenu[i].Id}.{mainMenu[i].Name}");
+            }
+            Console.WriteLine("Powiedz mi co chcesz zrobic: ");
+            
+            userInput = Console.ReadKey(); 
+            }
+            
+        }
+        
+       private static MenuActionService Initialize(MenuActionService newAction)
+       {
+           newAction.AddAction(1, "Dodaj nowego handlowca", "glowne");
+           newAction.AddAction(2, "Zwolnij handlowca", "glowne");
+           newAction.AddAction(3, "Wyswietl informacje o handlowcach", "glowne");
+           newAction.AddAction(4, "Wyswietl najlepszego handlowca", "glowne");
+           newAction.AddAction(5, "Wyswietl ranking handlowcow", "glowne");
+           newAction.AddAction(6, "Wyswietl handlowca", "glowne");
+           newAction.AddAction(7, "Aby zakonczyc program kliknij E", "glowne");
+           
+           return newAction;
+       }
+    }
+    
+        class MenuAction
+    {
+        public int Id {get; set;}
+        public string Name {get; set;}
+        public string MenuName {get; set;}
+         
+    }
+    
+    class MenuActionService
+    {
+        private List<MenuAction> menuActions;
+        
+        public MenuActionService()
+        {
+            menuActions= new List<MenuAction>();
+        }
+        
+        public void AddAction(int id, string name, string menuName)
+        {
+            MenuAction menuAction = new MenuAction ()
+            {
+                Id=id, 
+                Name=name, 
+                MenuName=menuName
+            };
+            
+            menuActions.Add(menuAction);
+        }
+        
+        public List<MenuAction> GetAllActionsFromMenuName(string menuName)
+        {
+            List<MenuAction> result = new List<MenuAction>();
+            foreach(var action in menuActions)
+            {
+                if(action.MenuName==menuName)
+                {
+                    result.Add(action);
+                }
+            }
+            return result;
+        }
+    }
+    
+    class Trader
+    {
+        public Trader(int id, string name, string surname, double kwp)
+        {
+            Id=id;
+            Name=name;
+            Surname=surname;
+            Kwp=kwp;
+        }
+        
+        public int Id{get;set;}
+        public string Name {get;set;}
+        public string Surname {get; set;}
+        public double Kwp {get; set;}
+    }
+    
+    class TraderService
+    {
+        private List<Trader> tradersList {get;set;}= new List<Trader>();
+        
+        private void DisplayTraderDetails(Trader traderd)
+        {
+            Console.WriteLine($"\nid:{traderd.Id}, {traderd.Name} {traderd.Surname}, kwp: {traderd.Kwp}");
+        }//uzyta
+        
+        public void AddTrader(Trader trader)
+        {
+            tradersList.Add(trader);
+        }
+        
+        public void DeleteTrader(int id)
+        {
+            var traderToDelete = tradersList.FirstOrDefault(t=>t.Id == id);
+            if(traderToDelete ==null)
+            {
+                Console.WriteLine("This salesman doesn't exist'");
+            }
+            else
+            {
+                tradersList.Remove(traderToDelete);
+            }
+        }
+        
+        public void FindTheBest()
+        {
+            List<Trader> findTheBestList = new List<Trader>();
+            var fromBestToWorst=tradersList.OrderByDescending(f=>f.Kwp).ToList();
+            
+            var x=fromBestToWorst.First();
+            
+            findTheBestList.Add(x);
+            DisplayTradersDetails(findTheBestList);
+        }
+        
+        public void Ranking()
+        {
+            var fromBestToWorst=tradersList.OrderByDescending(f=>f.Kwp).ToList();
+            DisplayTradersDetails(fromBestToWorst);
+        }
+        
+        public void FindTrader(int id)
+        {
+            var matchingTrader=tradersList.Where(t=>t.Id==id).ToList();
+            
+            DisplayTradersDetails(matchingTrader );
+        }
+        
+        private void DisplayTradersDetails(List<Trader> traderss)
+        {
+            foreach(var trader in traderss )
+            {
+                DisplayTraderDetails(trader);
+            }
+        }
+        
+        public void DisplayTrader(int id)
+        { 
+            var trader = tradersList.FirstOrDefault(t=>t.Id == id);
+            if(trader==null)
+            {
+                Console.WriteLine("This salesman doesn't exist'");
+            }
+            else
+            {
+                DisplayTraderDetails(trader);
+            }
+        }
+        
+        public void DisplayAllTraders()
+        {
+            DisplayTradersDetails (tradersList);
+        }
+    }
+}
